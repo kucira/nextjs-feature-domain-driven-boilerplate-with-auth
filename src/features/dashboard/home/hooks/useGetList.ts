@@ -34,9 +34,15 @@ const useGetList = (initialData?: any) => {
 	const page = query.page || 1;
 	const results = 10;
 	const totalPages = results * 10;
+	const url = new URL(window.location.href);
 
 	const params = {
 		...query,
+		gender: query?.gender || url.searchParams.get('gender') || '',
+		keyword: query?.keyword || url.searchParams.get('keyword') || '',
+		sortOrder: query?.sortOrder || url.searchParams.get('sortOrder') || '',
+		sortBy: query?.sortBy || url.searchParams.get('sortBy') || '',
+		page: query?.page || url.searchParams.get('page') || 1,
 		results,
 	};
 
