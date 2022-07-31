@@ -5,6 +5,7 @@ import type { AppProps } from 'next/app';
 import { QueryClient, QueryClientProvider, MutationCache } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 import { Hydrate } from 'react-query/hydration';
+import queryClient from 'src/shared/api/queryClient';
 
 import { useEffect, useState } from 'react';
 
@@ -34,22 +35,22 @@ function MyApp({ Component, pageProps }: AppProps) {
 		};
 	}, [router]);
 
-	const [queryClient] = useState(
-		() =>
-			new QueryClient({
-				defaultOptions: {
-					queries: {
-						staleTime: 60 * 1000, // 1m
-						retry: true,
-					},
-				},
-				mutationCache: new MutationCache({
-					onError: (err) => {
-						console.log(err);
-					},
-				}),
-			}),
-	);
+	// const [queryClient] = useState(
+	// 	() =>
+	// 		new QueryClient({
+	// 			defaultOptions: {
+	// 				queries: {
+	// 					staleTime: 60 * 1000, // 1m
+	// 					retry: true,
+	// 				},
+	// 			},
+	// 			mutationCache: new MutationCache({
+	// 				onError: (err) => {
+	// 					console.log(err);
+	// 				},
+	// 			}),
+	// 		}),
+	// );
 
 	return (
 		<QueryClientProvider client={queryClient}>
