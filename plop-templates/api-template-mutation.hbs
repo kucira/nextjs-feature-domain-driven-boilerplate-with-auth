@@ -1,0 +1,34 @@
+import { MUTATE_{{constantCase name}} } from 'src/shared/constants/endpoint';
+
+interface Props {
+	firstName: string;
+	lastName: string;
+	username: string;
+	email: string;
+	avatar: string;
+}
+
+const mutate{{pascalCase name}} = async (data: { email: string; password: string }) => {
+	const body: Props = {
+		firstName: 'Ut',
+		lastName: data.password,
+		username: data.email,
+		avatar: 'https://www.gravatar.com/avatar/00000000000000000000000000000000',
+		email: data.email,
+	};
+	const params = {
+		method: 'POST',
+		body: JSON.stringify(body),
+		headers: {
+			'Content-type': 'application/json; charset=UTF-8',
+		},
+	};
+	const res = await fetch(MUTATE_{{constantCase name}}, params);
+	if (!res.ok) {
+		throw new Error('Something wrong');
+	}
+
+	return await res.json();
+};
+
+export { mutate{{properCase name}} };

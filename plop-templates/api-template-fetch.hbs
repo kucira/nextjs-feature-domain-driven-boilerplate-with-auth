@@ -1,0 +1,24 @@
+import { FETCH_DATA } from 'src/shared/constants/endpoint';
+
+type apiFn = () => Promise<any>;
+
+type Props = {
+	key: string[];
+	api: apiFn;
+};
+
+const fetch{{pascalCase name}} = (params: string): Props => {
+	return {
+		key: ['{{pascalCase name}}', 'QUERY', params],
+		api: async () => {
+			const res = await fetch(FETCH_DATA(params));
+			if (!res.ok) {
+				throw new Error('Something wrong');
+			}
+
+			return await res.json();
+		},
+	};
+};
+
+export { fetch{{pascalCase name}} };

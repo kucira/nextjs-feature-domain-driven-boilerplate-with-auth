@@ -1,0 +1,38 @@
+{
+	"root": true,
+	"env": {
+		"jest/globals": true,
+		"es6": true
+	},
+	"plugins": ["jest", "jest-dom", "testing-library"],
+	"extends": [
+		"next",
+		"prettier",
+		"eslint:recommended",
+		"plugin:prettier/recommended"
+	],
+	"rules": {
+		"no-return-await": "off",
+		"no-nested-ternary": "off",
+		"no-use-before-define": "off",
+		"import/prefer-default-export": "off",
+		"react/jsx-no-bind": "off",
+		"react/prop-types": "off",
+		"react/forbid-prop-types": "off",
+		"react/jsx-props-no-spreading": "off",
+		"react-hooks/exhaustive-deps": "warn"
+	},
+	"overrides": [
+		{
+			"files": [
+				"**/__tests__/**/*.[jt]s?(x)",
+				"**/?(*.)+(spec|test).[jt]s?(x)"
+			],
+			"extends": [
+				"plugin:jest/recommended",
+				"plugin:jest-dom/recommended",
+				"plugin:testing-library/react"
+			]
+		}
+	]
+}
